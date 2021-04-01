@@ -1,4 +1,7 @@
-FROM bde2020/hadoop-base:2.0.0-hadoop3.2.1-java8
+ARG USERNAME
+ARG TAG
+
+FROM $USERNAME/hadoop-base:$TAG
 
 MAINTAINER Yiannis Mouchakis <gmouchakis@iit.demokritos.gr>
 MAINTAINER Ivan Ermilov <ivan.s.ermilov@gmail.com>
@@ -24,6 +27,7 @@ RUN	apt-get --purge remove -y wget && \
 
 #RUN wget -c https://archive.apache.org/dist/hive/hive-$HIVE_VERSION/a;spache-hive-$HIVE_VERSION-bin.tar.gz
 COPY apache-hive-$HIVE_VERSION-bin.tar.gz .
+#ADD https://archive.apache.org/dist/hive/hive-$HIVE_VERSION/apache-hive-$HIVE_VERSION-bin.tar.gz .
 
 RUN	tar -xzvf apache-hive-$HIVE_VERSION-bin.tar.gz && \
 	mv apache-hive-$HIVE_VERSION-bin hive && \
