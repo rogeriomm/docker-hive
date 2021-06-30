@@ -48,14 +48,15 @@ RUN mkdir -p $HIVE_HOME/tmp/java
 
 #Custom configuration goes here
 RUN mkdir -p $HIVE_HOME/conf
+RUN rm $HIVE_HOME/conf/*.template
 
 ADD conf/hive-site.xml $HIVE_HOME/conf
-#ADD conf/beeline-log4j2.properties $HIVE_HOME/conf
-#ADD conf/hive-env.sh $HIVE_HOME/conf
-#ADD conf/hive-exec-log4j2.properties $HIVE_HOME/conf
-#ADD conf/hive-log4j2.properties $HIVE_HOME/conf
-#ADD conf/ivysettings.xml $HIVE_HOME/conf
-#ADD conf/llap-daemon-log4j2.properties $HIVE_HOME/conf
+ADD conf/beeline-log4j2.properties $HIVE_HOME/conf
+ADD conf/hive-env.sh $HIVE_HOME/conf
+ADD conf/hive-exec-log4j2.properties $HIVE_HOME/conf
+ADD conf/hive-log4j2.properties $HIVE_HOME/conf
+ADD conf/ivysettings.xml $HIVE_HOME/conf
+ADD conf/llap-daemon-log4j2.properties $HIVE_HOME/conf
 
 COPY startup.sh /usr/local/bin/
 RUN chmod +x /usr/local/bin/startup.sh

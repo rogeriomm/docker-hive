@@ -8,6 +8,7 @@ build() {
     USER=$1
     PREFIX=$2
     NAME=$3
+
     if [ "$NAME" = "" ]; then
       IMAGE=$USER/$PREFIX:$TAG
     else

@@ -44,4 +44,10 @@
     <description>TCP interface to bind to</description>
   </property>
 
+  <property>
+    <name>hive.metastore.event.db.notification.api.auth</name>
+    <value>false</value>
+    <description> https://www.cnblogs.com/felixzh/p/10792047.html </description>
+  </property>
+
 </configuration>
