@@ -47,7 +47,7 @@
   <property>
     <name>hive.metastore.event.db.notification.api.auth</name>
     <value>false</value>
-    <description> https://www.cnblogs.com/felixzh/p/10792047.html </description>
+    <description> FIXME: https://kontext.tech/column/hadoop/303/hiveserver2-cannot-connect-to-hive-metastore-resolutionsworkarounds </description>
   </property>
 
 </configuration>

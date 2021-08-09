@@ -3,9 +3,6 @@ ARG TAG
 
 FROM $USERNAME/hadoop-base:$TAG
 
-MAINTAINER Yiannis Mouchakis <gmouchakis@iit.demokritos.gr>
-MAINTAINER Ivan Ermilov <ivan.s.ermilov@gmail.com>
-
 # Allow buildtime config of HIVE_VERSION
 ARG HIVE_VERSION
 # Set HIVE_VERSION from arg if provided at build, env if provided at run, or default
@@ -18,7 +15,7 @@ ENV PATH $HIVE_HOME/bin:$PATH
 
 WORKDIR /opt
 
-#Install Hive and PostgreSQL JDBC
+# Install Hive and PostgreSQL JDBC
 RUN apt-get update && apt-get install -y wget procps vim file tcpdump telnet
 
 RUN	apt-get --purge remove -y wget && \
@@ -35,8 +32,9 @@ RUN	tar -xzvf apache-hive-$HIVE_VERSION-bin.tar.gz && \
 	rm apache-hive-$HIVE_VERSION-bin.tar.gz
 
 # FIX https://issues.apache.org/jira/browse/HIVE-22915
-RUN rm /opt/hive/lib/guava-19.0.jar
-RUN cp /opt/hadoop-3.2.2/share/hadoop/hdfs/lib/guava-27.0-jre.jar /opt/hive/lib/
+# See https://github.com/IBM/docker-hive/blob/hadoop3.1.3-hive3.1.2/Dockerfile
+RUN rm $HIVE_HOME/lib/guava-19.0.jar
+RUN cp /opt/hadoop-3.2.2/share/hadoop/hdfs/lib/guava-27.0-jre.jar $HIVE_HOME/lib/
 
 #RUN	wget https://jdbc.postgresql.org/download/postgresql-9.4.1212.jar -O $HIVE_HOME/lib/postgresql-jdbc.jar
 COPY postgresql-9.4.1212.jar $HIVE_HOME/lib/postgresql-jdbc.jar
