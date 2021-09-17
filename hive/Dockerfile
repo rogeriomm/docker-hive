@@ -34,7 +34,7 @@ RUN	tar -xzvf apache-hive-$HIVE_VERSION-bin.tar.gz && \
 # FIX https://issues.apache.org/jira/browse/HIVE-22915
 # See https://github.com/IBM/docker-hive/blob/hadoop3.1.3-hive3.1.2/Dockerfile
 RUN rm $HIVE_HOME/lib/guava-19.0.jar
-RUN cp /opt/hadoop-3.2.2/share/hadoop/hdfs/lib/guava-27.0-jre.jar $HIVE_HOME/lib/
+RUN cp /opt/hadoop-3.3.1/share/hadoop/hdfs/lib/guava-27.0-jre.jar $HIVE_HOME/lib/
 
 #RUN	wget https://jdbc.postgresql.org/download/postgresql-9.4.1212.jar -O $HIVE_HOME/lib/postgresql-jdbc.jar
 COPY postgresql-9.4.1212.jar $HIVE_HOME/lib/postgresql-jdbc.jar
